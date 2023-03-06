@@ -61,8 +61,12 @@ class CreateTourneyTrainingData:
             team_2_seed = self.get_team_seed(team_2)
 
             # Build 2 training examples
-            example_one = np.array([*team_1_stats, team_1_seed, *team_2_stats, team_2_seed, 1])
-            example_two = np.array([*team_2_stats, team_2_seed, *team_1_stats, team_1_seed, 0])
+            example_one = np.array(
+                [team_1, team_2, self.season, *team_1_stats, team_1_seed, *team_2_stats, team_2_seed, 1]
+            )
+            example_two = np.array(
+                [team_2, team_1, self.season, *team_2_stats, team_2_seed, *team_1_stats, team_1_seed, 0]
+            )
             self.season_games.append(example_one)
             self.season_games.append(example_two)
 

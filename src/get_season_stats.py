@@ -117,7 +117,7 @@ class TeamSeasonStats:
         else:
             self.team_rank = np.mean(team_ordinal_data["OrdinalRank"])
         self.team_rank_std = 0
-        self.get_opponent_year_end_rankings()
+        self.get_opponent_women_year_end_rankings()
 
     def get_opponent_year_end_rankings(self):
         winning_teams = self.team_data["WTeamID"].tolist()
@@ -127,6 +127,8 @@ class TeamSeasonStats:
         team_rank_list = []
         for team in all_teams:
             team_rank_data = self.ordinal_data[self.ordinal_data["TeamID"] == team]
+            if team_rank_data.shape[0] == 0:
+                continue
             team_rank_list.append(np.mean(team_rank_data["OrdinalRank"]))
         self.opponent_rank = np.mean(team_rank_list)
         self.opponent_rank_std = np.std(team_rank_list)
@@ -139,7 +141,7 @@ class TeamSeasonStats:
         team_rank_list = []
         for team in all_teams:
             team_rank_data = self.ordinal_data[self.ordinal_data["TeamID"] == team]
-            if self.ordinal_data.shape[0] == 0:
+            if team_rank_data.shape[0] == 0:
                 team_rank_list.append(999)
             else:
                 team_rank_list.append(np.mean(team_rank_data["OrdinalRank"]))
