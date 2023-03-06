@@ -1,0 +1,232 @@
+Season,TeamName,Votes,TeamID
+2016,UConn,800,3163
+2016,South Carolina,756,3376
+2016,Notre Dame,745,3323
+2016,Baylor,706,3124
+2016,Maryland,672,3268
+2016,Oregon State,628,3333
+2016,Texas,603,3400
+2016,Louisville,563,3257
+2016,Ohio State,493,3326
+2016,Florida State,437,3199
+2016,Arizona State,428,3113
+2016,UCLA,420,3417
+2016,Kentucky,415,3246
+2016,Mississippi State,388,3280
+2016,Syracuse,364,3393
+2016,Stanford,345,3390
+2016,Michigan State,300,3277
+2016,Texas A&M,297,3401
+2016,Miami,226,3274
+2016,South Florida,221,3378
+2016,DePaul,173,3177
+2016,Colorado State,109,3161
+2016,Oklahoma,100,3328
+2016,BYU,48,3140
+2016,Florida,41,3196
+2016,West Virginia,36,3452
+2016,St. John’s,14,3385
+2016,Florida Gulf Coast,14,3195
+2016,UTEP,10,3431
+2016,Green Bay,8,3453
+2016,George Washington,8,3203
+2016,Albany,7,3107
+2016,Seton Hall,6,3371
+2016,Duquesne,5,3182
+2016,Western Kentucky,4,3443
+2016,James Madison,3,3241
+2016,NC State,3,3301
+2016,Chattanooga,2,3151
+2016,Villanova,1,3437
+2016,Duke,1,3181
+2017,UConn,800,3163
+2017,Notre Dame,761,3323
+2017,Maryland,733,3268
+2017,South Carolina,695,3376
+2017,Baylor,670,3124
+2017,Stanford,628,3390
+2017,Mississippi State,601,3280
+2017,Oregon State,573,3333
+2017,Duke,516,3181
+2017,Ohio State,492,3326
+2017,Washington,475,3449
+2017,Louisville,458,3257
+2017,Florida State,416,3199
+2017,UCLA,368,3417
+2017,Texas,361,3400
+2017,Miami,316,3274
+2017,DePaul,309,3177
+2017,NC State,248,3301
+2017,Drake,170,3179
+2017,Oklahoma,152,3328
+2017,Syracuse,151,3393
+2017,West Virginia,99,3452
+2017,Temple,99,3396
+2017,Kentucky,78,3246
+2017,South Florida,46,3378
+2017,Marquette,40,3266
+2017,Creighton,37,3166
+2017,Missouri,26,3281
+2017,Arizona State,26,3113
+2017,Kansas State,12,3243
+2017,Indiana,10,3231
+2017,Tennessee,9,3397
+2017,Little Rock,9,3114
+2017,Michigan,6,3276
+2017,Virginia,4,3438
+2017,Elon,2,3189
+2017,Stetson,2,3391
+2017,Gonzaga,1,3211
+2017,Jacksonville,1,3239
+2018,UConn,800,3163
+2018,Baylor,757,3124
+2018,Louisville,728,3257
+2018,Mississippi State,703,3280
+2018,Oregon,660,3332
+2018,Notre Dame,648,3323
+2018,South Carolina,623,3376
+2018,Texas,567,3400
+2018,UCLA,517,3417
+2018,Ohio State,500,3326
+2018,Florida State,478,3199
+2018,Oregon State,420,3333
+2018,Tennessee,410,3397
+2018,Missouri,324,3281
+2018,Texas A&M,322,3401
+2018,Maryland,293,3268
+2018,Georgia,271,3208
+2018,Duke,258,3181
+2018,South Florida,250,3378
+2018,Stanford,231,3390
+2018,Green Bay,193,3453
+2018,NC State,148,3301
+2018,Mercer,70,3273
+2018,DePaul,40,3177
+2018,Belmont,28,3125
+2018,Florida Gulf Coast,25,3195
+2018,Syracuse,22,3393
+2018,Michigan,21,3276
+2018,LSU,16,3261
+2018,Marquette,15,3266
+2018,Miami,14,3274
+2018,Central Michigan,14,3141
+2018,Buffalo,11,3138
+2018,Minnesota,6,3278
+2018,Oklahoma State,5,3329
+2018,Virginia,4,3438
+2018,Iowa,2,3234
+2018,Little Rock,2,3114
+2018,Quinnipiac,1,3346
+2018,UCF,1,3416
+2018,Virginia Tech,1,3439
+2018,Nebraska,1,3304
+2019,Baylor,800,3124
+2019,UConn,764,3163
+2019,Notre Dame,733,3323
+2019,Mississippi State,705,3280
+2019,Louisville,670,3257
+2019,Stanford,641,3390
+2019,Oregon,601,3332
+2019,Iowa,585,3234
+2019,Maryland,541,3268
+2019,NC State,503,3301
+2019,Oregon State,442,3333
+2019,Syracuse,395,3393
+2019,Iowa State,369,3235
+2019,Gonzaga,332,3211
+2019,Miami,327,3274
+2019,Marquette,321,3266
+2019,Kentucky,294,3246
+2019,South Carolina,265,3376
+2019,Texas A&M,222,3401
+2019,Arizona State,191,3113
+2019,DePaul,176,3177
+2019,Florida State,148,3199
+2019,Rice,75,3349
+2019,UCLA,69,3417
+2019,Drake,67,3179
+2019,Texas,47,3400
+2019,South Dakota State,33,3355
+2019,Missouri,26,3281
+2019,South Dakota,25,3377
+2019,Boise State,19,3129
+2019,Rutgers,5,3353
+2019,UCF,4,3416
+2019,Florida Gulf Coast,1,3195
+2019,Michigan,1,3276
+2021,UConn,795,3163
+2021,Stanford,773,3390
+2021,NC State,729,3301
+2021,Texas A&M,678,3401
+2021,South Carolina,664,3376
+2021,Baylor,654,3124
+2021,Louisville,607,3257
+2021,Maryland,604,3268
+2021,UCLA,525,3417
+2021,Indiana,474,3231
+2021,Arizona,465,3112
+2021,Georgia,433,3208
+2021,Gonzaga,376,3211
+2021,Michigan,340,3276
+2021,Tennessee,337,3397
+2021,Arkansas,290,3116
+2021,Missouri State,287,3283
+2021,South Florida,272,3378
+2021,Kentucky,226,3246
+2021,West Virginia,205,3452
+2021,Florida Gulf Coast,174,3195
+2021,Oregon,111,3332
+2021,Rutgers,102,3353
+2021,Ohio State,76,3326
+2021,South Dakota State,74,3355
+2021,Northwestern,31,3321
+2021,Iowa,29,3234
+2021,Stephen F. Austin,17,3372
+2021,Marquette,13,3266
+2021,Oklahoma State,10,3329
+2021,DePaul,6,3177
+2021,UCF,5,3416
+2021,Georgia Tech,5,3210
+2021,Dayton,3,3173
+2021,BYU,3,3140
+2021,Rice,3,3349
+2021,Delaware,3,3174
+2021,Oregon State,1,3333
+2022,South Carolina,770,3376
+2022,Stanford,744,3390
+2022,NC State,718,3301
+2022,Louisville,666,3257
+2022,Baylor,613,3124
+2022,UConn,600,3163
+2022,Texas,574,3400
+2022,Iowa State,537,3235
+2022,LSU,523,3261
+2022,Iowa,491,3234
+2022,Indiana,485,3231
+2022,Michigan,439,3276
+2022,Maryland,395,3268
+2022,BYU,337,3140
+2022,Ohio State,328,3326
+2022,Arizona,297,3112
+2022,Tennessee,296,3397
+2022,North Carolina,228,3314
+2022,Oklahoma,195,3328
+2022,Florida Gulf Coast,169,3195
+2022,Notre Dame,149,3323
+2022,Kentucky,135,3246
+2022,Virginia Tech,130,3439
+2022,UCF,125,3416
+2022,Georgia,51,3208
+2022,Georgia Tech,13,3210
+2022,Liberty,12,3251
+2022,Oregon,10,3332
+2022,Princeton,9,3343
+2022,Ole Miss,9,3279
+2022,South Florida,9,3378
+2022,Utah,6,3428
+2022,Gonzaga,4,3211
+2022,Florida,3,3196
+2022,South Dakota,2,3377
+2022,South Dakota State,1,3355
+2022,UMass,1,3269
+2022,Colorado,1,3160
