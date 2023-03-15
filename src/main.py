@@ -1,5 +1,6 @@
 from get_season_stats import SeasonStats, OrdinalsYearEnd, TeamSeasonStats
 from prep_training_data import SeedingStats, CreateTourneyTrainingData
+from make_warmup_submission import MakeWarmupSubmission
 from metadata_configs import get_metadata
 import numpy as np
 
@@ -11,6 +12,7 @@ class NCAAKaggle:
     def run(self):
         self.get_team_season_stats()
         self.generate_tourney_training_data()
+        self.make_warmup_submission()
 
     def get_team_season_stats(self):
         self.is_regular_season = True
@@ -56,9 +58,11 @@ class NCAAKaggle:
         np.save(f"./training_data/{self.file_save_id}/all_games.npy", all_games_npy)
         print(f"Finished generating tourney data for all seasons")
 
+    def make_warmup_submission(self):
+        MakeWarmupSubmission().run()
+
 
 if __name__ == "__main__":
-    is_men = False
-    is_regular_season = True
+    is_men = True
     ncaa_model = NCAAKaggle(is_men=is_men)
     ncaa_model.run()

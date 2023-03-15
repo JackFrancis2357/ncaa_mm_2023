@@ -5,7 +5,7 @@
 import numpy as np
 import pandas as pd
 
-from metadata_configs import get_col_names
+from metadata_configs import get_col_names, get_metadata
 
 
 class SeedingStats:

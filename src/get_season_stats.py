@@ -30,7 +30,7 @@ class OrdinalsYearEnd:
         self.season = None
         if men:
             self.identifier = "M"
-            self.data = pd.read_csv("./data/MMasseyOrdinals.csv")
+            self.data = pd.read_csv("./data/MMasseyOrdinals_thru_Season2023_Day128.csv")
         else:
             self.identifier = "W"
             self.data = pd.read_csv("./data/wncaa_espn.csv")
