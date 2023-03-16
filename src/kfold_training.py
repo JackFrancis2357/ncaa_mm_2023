@@ -11,7 +11,18 @@ import sys
 
 class KFoldFit:
     def __init__(
-        self, season, season_info, x_data, y_data, epochs, batch_size, is_men, node_mult, dropout_pct, layers, colnames=None
+        self,
+        season,
+        season_info,
+        x_data,
+        y_data,
+        epochs,
+        batch_size,
+        is_men,
+        node_mult,
+        dropout_pct,
+        layers,
+        colnames=None,
     ):
         self.season = season
         self.season_info = season_info
@@ -25,9 +36,13 @@ class KFoldFit:
         self.dropout_pct = dropout_pct
         self.layers = layers
         if self.is_men:
-            self.model, self.callbacks = MenMLModel().run(self.x_data.shape[1], self.node_mult, self.dropout_pct, self.layers)
+            self.model, self.callbacks = MenMLModel().run(
+                self.x_data.shape[1], self.node_mult, self.dropout_pct, self.layers
+            )
         else:
-            self.model, self.callbacks = WomenMLModel().run(self.x_data.shape[1], self.node_mult, self.dropout_pct, self.layers)
+            self.model, self.callbacks = WomenMLModel().run(
+                self.x_data.shape[1], self.node_mult, self.dropout_pct, self.layers
+            )
 
     def run(self):
         self.build_tvt_kfold()
@@ -46,7 +61,7 @@ class KFoldFit:
             self.x_test = self.x_data[self.x_test_ind]
             self.y_test = self.y_data[self.x_test_ind]
         self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(
-            x_train, y_train, test_size=0.4, random_state=3604
+            x_train, y_train, test_size=0.1, random_state=3604
         )
 
     def apply_scaling(self):
@@ -86,8 +101,12 @@ class KFoldFit:
         return self.model, self.scaler
 
 
+def get_feature_indices(colnames):
+    list_of_features_to_keep = ['Wins', 'Losses', 'Team_Rank', 'Opp_Rank', 'Points_Scored', 'FGM', 'FGA', 'FGM3', 'OR', 'DR', 'Seed']
+    pass
+
 if __name__ == "__main__":
-    is_men = True
+    is_men = False
     if is_men:
         a = np.load("./training_data/men_tourney/all_games.npy")
         identifier = "men"
@@ -95,21 +114,18 @@ if __name__ == "__main__":
         a = np.load("./training_data/women_tourney/all_games.npy")
         identifier = "women"
     colnames = get_training_data_col_names()
+    print(type(colnames))
+    # important_cols = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 22, 23, 24, 35, 36, 37, 48, 49, 50, 51, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 81, 82, 83, 94, 95, 96, 107, 108, 109, 110, 120]
     df = pd.DataFrame(a, columns=colnames)
 
     season_info = df.iloc[:, 2].values
     overall_x = df.iloc[:, 3:-1].values
     overall_y = df.iloc[:, -1].values
-
-    # scaler = StandardScaler()
-    # scaled_overall_x = scaler.fit_transform(overall_x)
-    # pca = PCA(n_components=0.95)
-    # scaled_pca_overall_x = pca.fit_transform(scaled_overall_x)
-
+    
     epochs = 1000
     batch_size = 2048
-    node_mult_list = [0.5, 0.7, 1, 1.5]
-    dropout_pct_list = [0.3, 0.5, 0.7]
+    node_mult_list = [0.3, 0.7, 1, 2]
+    dropout_pct_list = [0.2, 0.4, 0.6]
     num_layers = [1, 3, 5]
     num_vals = len(node_mult_list) * len(dropout_pct_list) * len(num_layers) + 1
     df_hyper_metrics = pd.DataFrame(
@@ -134,7 +150,7 @@ if __name__ == "__main__":
                         is_men=is_men,
                         node_mult=node_mult,
                         dropout_pct=dropout_pct,
-                        layers = layers
+                        layers=layers,
                     )
                     year_metrics = kfold_model.run()
                     metrics_list.append(year_metrics)
@@ -145,14 +161,16 @@ if __name__ == "__main__":
                 print(f"Average Training Error is {training_error}")
                 print(f"Average Validation Error is {validation_error}")
                 print(f"Average Test Error is {testing_error}")
-                df_hyper_metrics.iloc[ctr, :] = [node_mult, dropout_pct, layers, training_error, validation_error, testing_error]
+                df_hyper_metrics.iloc[ctr, :] = [
+                    node_mult,
+                    dropout_pct,
+                    layers,
+                    training_error,
+                    validation_error,
+                    testing_error,
+                ]
                 ctr += 1
                 print("\n")
-                print(f'Done with {ctr}')
+                print(f"Done with {ctr}")
                 print("\n")
-                df_hyper_metrics.to_csv(f"Hyper_metrics_{identifier}_2_val_4.csv")
-
-    # Next steps
-    # Create a make submission class
-    # Integrate with MLFlow to track metrics (or save in dict)
-    # Hyperparameter tuning for number of layers, using dropout, and size of hidden layers
+                df_hyper_metrics.to_csv(f"Hyper_metrics_{identifier}_2_val_reduced_features.csv")

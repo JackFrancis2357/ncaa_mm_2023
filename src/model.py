@@ -29,9 +29,12 @@ class MLModel:
 
 class MenMLModel(MLModel):
     def build_model(self):
-        # self.node_mult = 0.5
-        # self.dropout_pct = 0.5
-        # self.layers = 3
+        self.node_mult = 0.7
+        self.dropout_pct = 0.7
+        self.layers = 3
+        # self.node_mult = 1
+        # self.dropout_pct = 0.3
+        # self.layers = 5
         possible_nodes = [256, 512, 256, 128, 64]
         
         input_one = Input(shape=(self.input_shape,))
@@ -48,9 +51,12 @@ class MenMLModel(MLModel):
 
 class WomenMLModel(MLModel):
     def build_model(self):
-        # self.node_mult = 0.7
-        # self.dropout_pct = 0.7
-        # self.layers = 3
+        self.node_mult = 0.7
+        self.dropout_pct = 0.7
+        self.layers = 3
+        # self.node_mult = 1
+        # self.dropout_pct = 0.1
+        # self.layers = 5
         possible_nodes = [256, 512, 256, 128, 64]
         
         input_one = Input(shape=(self.input_shape,))

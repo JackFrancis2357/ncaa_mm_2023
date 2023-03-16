@@ -134,3 +134,9 @@ data/MMasseyOrdinals*
 *.npy
 jack_scratch.py
 .DS_Store
+Hyper_metrics*
+
+sub_1/*
+sub_2/*
+!sub_1/.gitkeep
+!sub_2/.gitkeep

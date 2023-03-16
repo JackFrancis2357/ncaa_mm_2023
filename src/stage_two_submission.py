@@ -12,8 +12,6 @@ class CreateCurrentYearTourneyTrainingData(CreateTourneyTrainingData):
         team_pairs = [*itertools.combinations(all_teams, 2)]
         self.season_games = []
         for team_1, team_2 in team_pairs:
-            # team_1 = self.season_data.loc[team_1]
-            # team_2 = self.season_data.loc[team_2]
             team_1_stats = self.df[self.df["TeamID"] == team_1].values[0][2:]
             team_2_stats = self.df[self.df["TeamID"] == team_2].values[0][2:]
             team_1_seed = self.get_team_seed(team_1)
@@ -39,7 +37,8 @@ class MakeFinalSubmission(MakeWarmupSubmission):
     def populate_submission_file(self):
         year = self.max_year
         year_data = np.load(f"./training_data/{self.file_save_id}/tourney_{year}.npy")
-        year_data_x = year_data[:, 3:]
+        important_cols = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 22, 23, 24, 35, 36, 37, 48, 49, 50, 51, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 81, 82, 83, 94, 95, 96, 107, 108, 109, 110, 120]
+        year_data_x = year_data[:, important_cols]
         year_data_x_scaled = self.scaler.transform(year_data_x)
         y_pred = self.model.predict(year_data_x_scaled, batch_size=self.batch_size)
         num_games = y_pred.shape[0] // 2
@@ -57,6 +56,7 @@ class MakeFinalSubmission(MakeWarmupSubmission):
                 self.submission_file.loc[sub_id, :] = team_2_prob[0]
                 self.df.iloc[i, :] = sub_id, team_2_prob[0]
         self.df.to_csv(f'old_kaggle_submission_format_{self.identifier}.csv')
+        self.submission_file.to_csv(self.submission_filename)
 
 def bracketeer_png_men():
     b = build_bracket(

@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from metadata_configs import get_metadata
+from metadata_configs import get_metadata, get_training_data_col_names
 from kfold_training import KFoldFit
 from sklearn.model_selection import train_test_split
 
@@ -34,8 +34,10 @@ class MakeWarmupSubmission:
         else:
             data = np.load(f"./training_data/{self.file_save_id}/all_games.npy")
             self.identifier = 'women'
+            
         self.season_info = data[:, 2]
-        self.overall_x = data[:, 3:-1]
+        self.important_cols = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 22, 23, 24, 35, 36, 37, 48, 49, 50, 51, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 81, 82, 83, 94, 95, 96, 107, 108, 109, 110, 120]
+        self.overall_x = data[:, self.important_cols]
         self.overall_y = data[:, -1]
 
     def get_model_scaler_metadata(self):
@@ -60,7 +62,7 @@ class MakeWarmupSubmission:
                 continue
             else:
                 year_data = np.load(f"./training_data/{self.file_save_id}/tourney_{year}.npy")
-                year_data_x = year_data[:, 3:-1]
+                year_data_x = year_data[:, self.important_cols]
                 year_data_x_scaled = self.scaler.transform(year_data_x)
                 y_pred = self.model.predict(year_data_x_scaled, batch_size=self.batch_size)
                 num_games = y_pred.shape[0] // 2
@@ -76,7 +78,7 @@ class MakeWarmupSubmission:
                         sub_id = f"{year}_{team_2}_{team_1}"
                         self.submission_file.loc[sub_id, :] = team_2_prob[0]
 
-    def run(self, cutoff_year=2017, epochs=1000, batch_size=2048):
+    def run(self, cutoff_year=2018, epochs=1000, batch_size=2048):
         self.cutoff_year = cutoff_year
         self.epochs = epochs
         self.batch_size = batch_size
