@@ -8,26 +8,32 @@ from sklearn.model_selection import train_test_split
 class SubmissionFit(KFoldFit):
     def build_tvt_kfold(self):
         x_train_ind = np.where(self.season_info < self.season)
-        x_test_ind = np.where(self.season_info >= self.season)
+        self.x_test_ind = np.where(self.season_info >= self.season)
         x_train = self.x_data[x_train_ind]
         y_train = self.y_data[x_train_ind]
-        self.x_test = self.x_data[x_test_ind]
-        self.y_test = self.y_data[x_test_ind]
+        if len(self.x_test_ind[0]) > 1:
+            self.x_test = self.x_data[self.x_test_ind]
+            self.y_test = self.y_data[self.x_test_ind]
         self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(
             x_train, y_train, test_size=0.2, random_state=3604
         )
-        return super().build_tvt_kfold()
+    
+    def explain_model(self):
+        pass
 
 
 class MakeWarmupSubmission:
     def __init__(self):
         self.submission_file = pd.read_csv("./data/SampleSubmissionWarmup.csv", index_col=0)
+        self.submission_filename = 'test_sub.csv'
 
     def load_data(self):
         if self.is_men:
             data = np.load(f"./training_data/{self.file_save_id}/all_games.npy")
+            self.identifier = 'men'
         else:
             data = np.load(f"./training_data/{self.file_save_id}/all_games.npy")
+            self.identifier = 'women'
         self.season_info = data[:, 2]
         self.overall_x = data[:, 3:-1]
         self.overall_y = data[:, -1]
@@ -41,6 +47,9 @@ class MakeWarmupSubmission:
             epochs=self.epochs,
             batch_size=self.batch_size,
             is_men=self.is_men,
+            node_mult=0,
+            dropout_pct=0,
+            layers=0
         )
         self.year_metrics = kfold_model.run()
         self.model, self.scaler = kfold_model.get_model_scaler()
@@ -76,7 +85,7 @@ class MakeWarmupSubmission:
             self.load_data()
             self.get_model_scaler_metadata()
             self.populate_submission_file()
-        self.submission_file.to_csv("test_sub.csv")
+        self.submission_file.to_csv(self.submission_filename)
 
 
 if __name__ == "__main__":
