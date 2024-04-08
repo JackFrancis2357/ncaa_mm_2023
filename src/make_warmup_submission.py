@@ -36,8 +36,9 @@ class MakeWarmupSubmission:
             self.identifier = 'women'
             
         self.season_info = data[:, 2]
-        self.important_cols = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 22, 23, 24, 35, 36, 37, 48, 49, 50, 51, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 81, 82, 83, 94, 95, 96, 107, 108, 109, 110, 120]
-        self.overall_x = data[:, self.important_cols]
+        # self.important_cols = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 22, 23, 24, 35, 36, 37, 48, 49, 50, 51, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 81, 82, 83, 94, 95, 96, 107, 108, 109, 110, 120]
+        # self.overall_x = data[:, self.important_cols]
+        self.overall_x = data[:, 3:-1]
         self.overall_y = data[:, -1]
 
     def get_model_scaler_metadata(self):

@@ -37,8 +37,9 @@ class MakeFinalSubmission(MakeWarmupSubmission):
     def populate_submission_file(self):
         year = self.max_year
         year_data = np.load(f"./training_data/{self.file_save_id}/tourney_{year}.npy")
-        important_cols = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 22, 23, 24, 35, 36, 37, 48, 49, 50, 51, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 81, 82, 83, 94, 95, 96, 107, 108, 109, 110, 120]
-        year_data_x = year_data[:, important_cols]
+        # important_cols = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 22, 23, 24, 35, 36, 37, 48, 49, 50, 51, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 81, 82, 83, 94, 95, 96, 107, 108, 109, 110, 120]
+        # year_data_x = year_data[:, important_cols]
+        year_data_x = year_data[:, 3:]
         year_data_x_scaled = self.scaler.transform(year_data_x)
         y_pred = self.model.predict(year_data_x_scaled, batch_size=self.batch_size)
         num_games = y_pred.shape[0] // 2

@@ -48,7 +48,7 @@ class KFoldFit:
         self.build_tvt_kfold()
         self.apply_scaling()
         self.fit_kfold()
-        # self.explain_model()
+        self.explain_model()
         self.get_test_metrics()
         return self.metrics
 
@@ -56,6 +56,7 @@ class KFoldFit:
         x_train_ind = np.where(self.season_info != self.season)
         self.x_test_ind = np.where(self.season_info == self.season)
         x_train = self.x_data[x_train_ind]
+        df = pd.DataFrame(x_train)
         y_train = self.y_data[x_train_ind]
         if len(self.x_test_ind[0]) > 1:
             self.x_test = self.x_data[self.x_test_ind]
@@ -124,9 +125,9 @@ if __name__ == "__main__":
     
     epochs = 1000
     batch_size = 2048
-    node_mult_list = [0.3, 0.7, 1, 2]
-    dropout_pct_list = [0.2, 0.4, 0.6]
-    num_layers = [1, 3, 5]
+    node_mult_list = [0.7]
+    dropout_pct_list = [0.7]
+    num_layers = [3]
     num_vals = len(node_mult_list) * len(dropout_pct_list) * len(num_layers) + 1
     df_hyper_metrics = pd.DataFrame(
         index=range(num_vals), columns=["Node_Mult", "Dropout", "Num_Layers", "Train", "Validation", "Test"]
